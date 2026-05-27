@@ -119,17 +119,22 @@ predecessores('Prolog Stardard', 'CLP').
 predecessores('SQL 92', 'SEQUEL').
 predecessores('SQL 99', 'SQL 92').
 
-% Resolução Ex 1 do Projeto.
+% 1. Defina uma regra para informar (true ou false) se uma determinada 
+% linguagem possui alguma predecessora:
 lingcompre(Ling) :- predecessores(Ling, _).
 
-% Resolução Ex 2 do Projeto.
+% 2. Defina uma regra para informar (true ou false) se uma determinada linguagem, além de possuir uma
+% linguagem predecessora (anterior) também seja predecessora de uma outra linguagem:
 lingprecompre(Ling) :- (predecessores(Ling, _), predecessores(_, Ling)).
 
-% Resolução Ex 3 do Projeto.
-lingpreano(Ling, PrAno) :- linguagem(Ling, Ano), Ano =< PrAno.
+% 3. Defina uma regra para informar linguagens predecessoras de linguagens desenvolvidas em um
+% determinado ano. Importante: a resposta da consulta deve ser considerada conforme o argumento para
+% o ano do predicado linguagem no momento da definição na base de conhecimento.
+lingpreano(Ling, PrAno) :- linguagem(Ling, Ano), Ano == PrAno.
 
-% Resolução Ex 4 do Projeto.
+% 4. Defina uma regra para informar quais são as linguagens L que NÃO são predecessoras de outras
+% linguagens, ou seja, NÃO tem linguagens sucessoras.
 lingnaosaopre(Ling) :- linguagem(Ling, _), (predecessores(Ling, _), \+ predecessores(_, Ling)).
 
-% Resolução Ex 5 do Projeto.
+% 5. Defina uma regra para informar quais são as linguagens L que NÃO tem predecessora.
 lingnaotempre(Ling) :- linguagem(Ling, _), \+ predecessores(Ling, _).
