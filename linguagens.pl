@@ -63,11 +63,11 @@ linguagem('SQL 92', 1992).
 linguagem('SQL 99', 1999).
 
 % Predicado com a precedência imediata: predecessora(nome da linguagem, nome da predecessora)
-predecessora('Fortran 66', 'Fortran').
-predecessora('Fortran 77', 'Fortran 66').
-predecessora('Fortran 90', 'Fortran 77').
-predecessora('Fortran 97(HPF)', 'Fortran 90').
-predecessora('Fortran 04', 'Fortran 97(HPF)').
+predecessores('Fortran 66', 'Fortran').
+predecessores('Fortran 77', 'Fortran 66').
+predecessores('Fortran 90', 'Fortran 77').
+predecessores('Fortran 97(HPF)', 'Fortran 90').
+predecessores('Fortran 04', 'Fortran 97(HPF)').
 predecessores('Visual Basic', 'Basic').
 predecessores('VB NET', 'Visual Basic').
 predecessores('Cobol 68', 'Cobol').
@@ -118,3 +118,18 @@ predecessores('CLP', 'Prolog').
 predecessores('Prolog Stardard', 'CLP').
 predecessores('SQL 92', 'SEQUEL').
 predecessores('SQL 99', 'SQL 92').
+
+% Resolução Ex 1 do Projeto.
+lingcompre(Ling) :- predecessores(Ling, _).
+
+% Resolução Ex 2 do Projeto.
+lingprecompre(Ling) :- (predecessores(Ling, _), predecessores(_, Ling)).
+
+% Resolução Ex 3 do Projeto.
+lingpreano(Ling, PrAno) :- linguagem(Ling, Ano), Ano =< PrAno.
+
+% Resolução Ex 4 do Projeto.
+lingnaosaopre(Ling) :- linguagem(Ling, _), (predecessores(Ling, _), \+ predecessores(_, Ling)).
+
+% Resolução Ex 5 do Projeto.
+lingnaotempre(Ling) :- linguagem(Ling, _), \+ predecessores(Ling, _).
