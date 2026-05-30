@@ -63,69 +63,69 @@ linguagem('SQL 92', 1992).
 linguagem('SQL 99', 1999).
 
 % Predicado com a precedência imediata: predecessora(nome da linguagem, nome da predecessora)
-predecessores('Fortran 66', 'Fortran').
-predecessores('Fortran 77', 'Fortran 66').
-predecessores('Fortran 90', 'Fortran 77').
-predecessores('Fortran 97(HPF)', 'Fortran 90').
-predecessores('Fortran 04', 'Fortran 97(HPF)').
-predecessores('Visual Basic', 'Basic').
-predecessores('VB NET', 'Visual Basic').
-predecessores('Cobol 68', 'Cobol').
-predecessores('Cobol 74', 'Cobol 68').
-predecessores('Cobol 85', 'Cobol 74').
-predecessores('Cobol 02', 'Cobol 85').
-predecessores('PL/I', 'Fortran').
-predecessores('PL/I', 'Cobol').
-predecessores('PL/I', 'Algol 60').
-predecessores('Algol 60', 'IAL').
-predecessores('Algol 68', 'Algol 60').
-predecessores('Jovial', 'IAL').
-predecessores('Pascal', 'Algol 60').
-predecessores('Pascal', 'Simula').
-predecessores('Modula 2', 'Pascal').
-predecessores('Modula 3', 'Modula 2').
-predecessores('Ada 83', 'Pascal').
-predecessores('Concurrent Pascal', 'Pascal').
-predecessores('Ada 95', 'Ada 83').
-predecessores('Spark/Ada', 'Ada 95').
-predecessores('Smalltalk', 'Simula').
-predecessores('Eiffel', 'Smalltalk').
-predecessores('Java', 'Smalltalk').
-predecessores('Java', 'C++').
-predecessores('JML', 'Java').
-predecessores('Java 5', 'Java').
-predecessores('C', 'BCPL').
-predecessores('C++', 'C').
-predecessores('C++ 03', 'C++').
-predecessores('C#', 'C++ 03').
-predecessores('awk', 'C').
-predecessores('Tcl/Tk', 'awk').
-predecessores('Perl', 'awk').
-predecessores('Python', 'Perl').
-predecessores('Python 2.4', 'Python').
-predecessores('PHP', 'Perl').
-predecessores('APL2', 'APL').
-predecessores('Common Lisp', 'Lisp').
-predecessores('CLOS', 'Common Lisp').
-predecessores('Scheme', 'Lisp').
-predecessores('ML', 'Iswim').
-predecessores('Miranda', 'ML').
-predecessores('Haskell', 'Miranda').
-predecessores('Haskell 98', 'Haskell').
-predecessores('SML', 'ML').
-predecessores('OCAML', 'SML').
-predecessores('CLP', 'Prolog').
-predecessores('Prolog Stardard', 'CLP').
-predecessores('SQL 92', 'SEQUEL').
-predecessores('SQL 99', 'SQL 92').
+predecessora('Fortran 66', 'Fortran').
+predecessora('Fortran 77', 'Fortran 66').
+predecessora('Fortran 90', 'Fortran 77').
+predecessora('Fortran 97(HPF)', 'Fortran 90').
+predecessora('Fortran 04', 'Fortran 97(HPF)').
+predecessora('Visual Basic', 'Basic').
+predecessora('VB NET', 'Visual Basic').
+predecessora('Cobol 68', 'Cobol').
+predecessora('Cobol 74', 'Cobol 68').
+predecessora('Cobol 85', 'Cobol 74').
+predecessora('Cobol 02', 'Cobol 85').
+predecessora('PL/I', 'Fortran').
+predecessora('PL/I', 'Cobol').
+predecessora('PL/I', 'Algol 60').
+predecessora('Algol 60', 'IAL').
+predecessora('Algol 68', 'Algol 60').
+predecessora('Jovial', 'IAL').
+predecessora('Pascal', 'Algol 60').
+predecessora('Pascal', 'Simula').
+predecessora('Modula 2', 'Pascal').
+predecessora('Modula 3', 'Modula 2').
+predecessora('Ada 83', 'Pascal').
+predecessora('Concurrent Pascal', 'Pascal').
+predecessora('Ada 95', 'Ada 83').
+predecessora('Spark/Ada', 'Ada 95').
+predecessora('Smalltalk', 'Simula').
+predecessora('Eiffel', 'Smalltalk').
+predecessora('Java', 'Smalltalk').
+predecessora('Java', 'C++').
+predecessora('JML', 'Java').
+predecessora('Java 5', 'Java').
+predecessora('C', 'BCPL').
+predecessora('C++', 'C').
+predecessora('C++ 03', 'C++').
+predecessora('C#', 'C++ 03').
+predecessora('awk', 'C').
+predecessora('Tcl/Tk', 'awk').
+predecessora('Perl', 'awk').
+predecessora('Python', 'Perl').
+predecessora('Python 2.4', 'Python').
+predecessora('PHP', 'Perl').
+predecessora('APL2', 'APL').
+predecessora('Common Lisp', 'Lisp').
+predecessora('CLOS', 'Common Lisp').
+predecessora('Scheme', 'Lisp').
+predecessora('ML', 'Iswim').
+predecessora('Miranda', 'ML').
+predecessora('Haskell', 'Miranda').
+predecessora('Haskell 98', 'Haskell').
+predecessora('SML', 'ML').
+predecessora('OCAML', 'SML').
+predecessora('CLP', 'Prolog').
+predecessora('Prolog Stardard', 'CLP').
+predecessora('SQL 92', 'SEQUEL').
+predecessora('SQL 99', 'SQL 92').
 
 % 1. Defina uma regra para informar (true ou false) se uma determinada 
 % linguagem possui alguma predecessora:
-lingcompre(Ling) :- predecessores(Ling, _).
+lingcompre(Ling) :- predecessora(Ling, _).
 
 % 2. Defina uma regra para informar (true ou false) se uma determinada linguagem, além de possuir uma
 % linguagem predecessora (anterior) também seja predecessora de uma outra linguagem:
-lingprecompre(Ling) :- (predecessores(Ling, _), predecessores(_, Ling)).
+lingprecompre(Ling) :- (predecessora(Ling, _), predecessora(_, Ling)).
 
 % 3. Defina uma regra para informar linguagens predecessoras de linguagens desenvolvidas em um
 % determinado ano. Importante: a resposta da consulta deve ser considerada conforme o argumento para
@@ -134,7 +134,23 @@ lingpreano(Ling, PrAno) :- linguagem(Ling, Ano), Ano == PrAno.
 
 % 4. Defina uma regra para informar quais são as linguagens L que NÃO são predecessoras de outras
 % linguagens, ou seja, NÃO tem linguagens sucessoras.
-lingnaosaopre(Ling) :- linguagem(Ling, _), (predecessores(Ling, _), \+ predecessores(_, Ling)).
+lingnaosaopre(Ling) :- linguagem(Ling, _), (predecessora(Ling, _), \+ predecessora(_, Ling)).
 
 % 5. Defina uma regra para informar quais são as linguagens L que NÃO tem predecessora.
-lingnaotempre(Ling) :- linguagem(Ling, _), \+ predecessores(Ling, _).
+lingnaotempre(Ling) :- linguagem(Ling, _), \+ predecessora(Ling, _).
+
+% 6. Defina uma regra para informar as linguagens que surgiram em uma determinada década. Nota: os testes 
+% o segundo  argumento  sempre  será  múltiplo  de  10  e  a  resposta  da  consulta  deve  ser  considerada 
+% conforme o argumento para o ano do predicado linguagem no momento da definição na base de dados.
+lingdecada(L, Decada) :- linguagem(L, Ano), Decada is div(Ano, 10) * 10.
+
+% 7.  Defina uma regra para informar as linguagens (LPP)  que são predecessora de outras linguagens LP que, 
+% por sua vez, também são predecessora de uma outra linguagem L.
+lingprepre(LPP, LP, L) :- predecessora(L, LP), predecessora(LP, LPP).
+
+% 8. Defina uma  regra para informar as linguagens predecessoras LP e a sua sucessora LS de forma que elas 
+% tenham uma diferença de pelo menos 10 anos (uma década) de desenvolvimento entre LP e LS.
+lingtempo10(LP, LS) :- predecessora(LS, LP), linguagem(LP, AnoLP), linguagem(LS, AnoLS), AnoLS - AnoLP >= 10.
+
+% 9. Defina uma regra para informar se duas diferentes linguagens têm uma mesma linguagem predecessora.
+lingmesmapre(L1, L2, LP) :- L1 \= L2, predecessora(L1, LP), predecessora(L2, LP).
