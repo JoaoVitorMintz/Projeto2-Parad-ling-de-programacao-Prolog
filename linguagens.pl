@@ -1,3 +1,6 @@
+% Aluno: João Vitor Garcia Aguiar Mintz; RA: 10440421
+% Aluno: Giovanni Barreiro Garitano de Castro; RA: 10435745
+
 % Predicado com a sequência de argumentos de nome da linguagem e ano de criação: linguagem(nome, ano).
 linguagem('Fortran', 1955).
 linguagem('Fortran 66', 1966).
@@ -5,7 +8,7 @@ linguagem('Fortran 77', 1977).
 linguagem('Fortran 90', 1990).
 linguagem('Fortran 97(HPF)', 1997).
 linguagem('Fortran 04', 2004).
-linguagem('Basic', 1966).
+linguagem('Basic', 1964).
 linguagem('Visual Basic', 1993).
 linguagem('VB NET', 2003).
 linguagem('Cobol', 1955).
@@ -28,20 +31,20 @@ linguagem('Concurrent Pascal', 1973).
 linguagem('Simula', 1968).
 linguagem('Smalltalk', 1985).
 linguagem('Eiffel', 1993).
-linguagem('Java', 1997).
+linguagem('Java', 1995).
 linguagem('JML', 2001).
 linguagem('Java 5', 2002).
 linguagem('BCPL', 1969).
 linguagem('C', 1972).
 linguagem('C++', 1986).
-linguagem('C++ 03', 1995).
+linguagem('C++ 03', 2003).
 linguagem('C#', 2001).
 linguagem('awk', 1975).
 linguagem('Tcl/Tk', 1987).
 linguagem('Perl', 1985).
-linguagem('Python', 1994).
+linguagem('Python', 1991).
 linguagem('Python 2.4', 2005).
-linguagem('PHP', 1996).
+linguagem('PHP', 1994).
 linguagem('APL', 1964).
 linguagem('APL2', 1974).
 linguagem('Lisp', 1960).
@@ -51,7 +54,7 @@ linguagem('CLOS', 1992).
 linguagem('Iswim', 1967).
 linguagem('ML', 1977).
 linguagem('Miranda', 1984).
-linguagem('Haskell', 1991).
+linguagem('Haskell', 1990).
 linguagem('Haskell 98', 1998).
 linguagem('SML', 1986).
 linguagem('OCAML', 1996).
@@ -146,7 +149,7 @@ lingdecada(L, Decada) :- linguagem(L, Ano), Decada is div(Ano, 10) * 10.
 
 % 7.  Defina uma regra para informar as linguagens (LPP)  que são predecessora de outras linguagens LP que, 
 % por sua vez, também são predecessora de uma outra linguagem L.
-lingprepre(LPP, LP, L) :- predecessora(L, LP), predecessora(LP, LPP).
+lingprepre(LPP, LP, L) :- predecessora(LP, LPP), predecessora(L, LP).
 
 % 8. Defina uma  regra para informar as linguagens predecessoras LP e a sua sucessora LS de forma que elas 
 % tenham uma diferença de pelo menos 10 anos (uma década) de desenvolvimento entre LP e LS.
